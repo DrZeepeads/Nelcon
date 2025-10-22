@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Medical-grade light theme for Nelson-GPT */
+  --primary: #10a37f;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #10a37f;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #10a37f;
+  --chart-2: #0d8b6f;
+  --chart-3: #0a7a60;
+  --chart-4: #086950;
+  --chart-5: #065840;
+  --radius: 0.65rem;
+  --background: #ffffff;
+  --foreground: #374151;
+  --card: #ffffff;
+  --card-foreground: #374151;
+  --popover: #ffffff;
+  --popover-foreground: #374151;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #6b7280;
+  --muted: #e5e7eb;
+  --muted-foreground: #6b7280;
+  --accent: #10a37f;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #f3f4f6;
+  --ring: #10a37f;
+  --sidebar: #f7f7f8;
+  --sidebar-foreground: #374151;
+  --sidebar-accent: #10a37f;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #10a37f;
+}
+
+.dark {
+  /* Medical-grade dark theme for Nelson-GPT */
+  --primary: #10a37f;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #10a37f;
+  --sidebar-primary-foreground: #ffffff;
+  --background: #212121;
+  --foreground: #ececf1;
+  --card: #2a2a2a;
+  --card-foreground: #ececf1;
+  --popover: #2a2a2a;
+  --popover-foreground: #ececf1;
+  --secondary: #3a3a3a;
+  --secondary-foreground: #a0a0a0;
+  --muted: #404040;
+  --muted-foreground: #a0a0a0;
+  --accent: #10a37f;
+  --accent-foreground: #212121;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #404040;
+  --input: #2a2a2a;
+  --ring: #10a37f;
+  --chart-1: #10a37f;
+  --chart-2: #0d8b6f;
+  --chart-3: #0a7a60;
+  --chart-4: #086950;
+  --chart-5: #065840;
+  --sidebar: #171717;
+  --sidebar-foreground: #ececf1;
+  --sidebar-accent: #10a37f;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #404040;
+  --sidebar-ring: #10a37f;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
